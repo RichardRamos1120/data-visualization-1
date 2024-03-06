@@ -222,3 +222,35 @@ let ctx3 = document.getElementById('pieChart').getContext('2d');
 new Chart(ctx3, { type: 'pie', data: pieData });
 let ctx4 = document.getElementById('doughnutChart').getContext('2d');
 new Chart(ctx4, { type: 'doughnut', data: doughnutData });
+
+
+
+let data = {
+    labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'],
+    datasets: [{
+        label: 'Sample Data',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)', // Bar color
+        borderColor: 'rgba(75, 192, 192, 1)',     // Border color
+        borderWidth: 1,
+        data: [10, 20, 15, 25]  // Actual data values
+    }]
+};
+
+// Configuration options for the chart
+let options1 = {
+    scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+};
+
+// Get the canvas element
+let ctx1 = document.getElementById('myBarChart').getContext('2d');
+
+// Create the bar chart
+let myBarChart = new Chart(ctx1, {
+    type: 'bar',
+    data: data,
+    options: options1
+});
