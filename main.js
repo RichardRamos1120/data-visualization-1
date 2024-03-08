@@ -27,7 +27,7 @@ questionList.addEventListener("change",(v)=>{
 
 function calculateQuestions (data,Qdata){
 
-    currentLabel = ["1","2","3","4","5"];
+    currentLabel = ["One","Two","Three","Four","Five"];
     currentLabelCount = [0,0,0,0,0];
     currData = data.map(d=>{
         if(d[Qdata] === "1"){
@@ -245,12 +245,111 @@ let options1 = {
     }
 };
 
-// Get the canvas element
-let ctx1 = document.getElementById('myBarChart').getContext('2d');
 
-// Create the bar chart
-let myBarChart = new Chart(ctx1, {
-    type: 'bar',
-    data: data,
-    options: options1
-});
+let questionListVegetation = document.querySelector("#question-list-input-vegetation");
+
+let q7123,q36123,q38123;
+q7 = document.querySelector("#chartq7")
+q36 = document.querySelector("#chartq36")
+q38 = document.querySelector("#chartq38")
+
+
+questionListVegetation.addEventListener("change",(v)=>{
+    let choice = questionListVegetation.options[questionListVegetation.selectedIndex]
+    if(choice.value === "q7"){
+        document.querySelector("#graphTitle2").innerText = "Do you believe the vegetation in the public open space near you is a fire risk?: Yes, no or I don't know"
+        document.querySelector("#chartq7").classList.remove("hidden");
+        document.querySelector("#chartq36").classList.add("hidden");
+        document.querySelector("#chartq38").classList.add("hidden");
+    }
+
+    else if(choice.value === "q36"){
+        document.querySelector("#graphTitle2").innerText = "Have there been any projects to remove or manage vegetation to reduce fire risk in the open spaces near your home?: Yes, no or I don't know"
+        document.querySelector("#chartq7").classList.add("hidden");
+        document.querySelector("#chartq36").classList.remove("hidden");
+        document.querySelector("#chartq38").classList.add("hidden");
+    }
+    else {
+        document.querySelector("#graphTitle2").innerText = "How would you rate the performance of the entities responsible for removing vegetation to reduce fire risks?: One to Five"
+        document.querySelector("#chartq7").classList.add("hidden");
+        document.querySelector("#chartq36").classList.add("hidden");
+        document.querySelector("#chartq38").classList.remove("hidden");
+    }
+
+})
+
+
+var chart2222 = new Chart('chartq7', {
+    type: "horizontalBar",
+        options: {
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            }
+        },
+        data: {
+            labels: ['No', 'Yes', 'I dont know'],
+            datasets: [
+                {
+                    data: [232, 160, 109],
+                    backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)',
+                        'rgba(168,255,86,0.5)','rgba(199,86,255,0.5)']
+,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                }
+            ]
+        }
+  });
+
+  var chartq36 = new Chart('chartq36', {
+    type: "horizontalBar",
+        options: {
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            }
+        },
+        data: {
+            labels: ['No', 'Yes', 'I dont know'],
+            datasets: [
+                {
+                    data: [150, 135, 217],
+                    backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)',
+                        'rgba(168,255,86,0.5)','rgba(199,86,255,0.5)']
+,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                }
+            ]
+        }
+  });
+
+  var chart38 = new Chart('chartq38', {
+    type: "horizontalBar",
+        options: {
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            }
+        },
+        data: {
+            labels: ['One', 'Two', 'Three','Four','Five'],
+            datasets: [
+                {
+                    data: [42, 39, 168,120,136],
+                    backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)',
+                        'rgba(168,255,86,0.5)','rgba(199,86,255,0.5)']
+,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                }
+            ]
+        }
+  });
